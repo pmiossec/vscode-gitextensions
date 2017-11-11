@@ -1,38 +1,101 @@
 {
-    "name": "vscode-gitextensions",
-    "displayName": "GitExtensions",
-    "description": "Open GitExtensions GUI from Visual Studio Code",
-    "version": "0.0.1",
-    "publisher": "pmiossec",
-    "engines": {
-        "vscode": "^1.18.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:extension.sayHello"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
-    }
+  "name": "vscode-gitextensions",
+  "displayName": "GitExtensions",
+  "description": "Open GitExtensions GUI from Visual Studio Code",
+  "version": "0.0.1",
+  "publisher": "pmiossec",
+  "engines": {
+    "vscode": "^1.18.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:extension.gitextensions.blame",
+    "onCommand:extension.gitextensions.branch",
+    "onCommand:extension.gitextensions.browse",
+    "onCommand:extension.gitextensions.commit",
+    "onCommand:extension.gitextensions.checkoutbranch",
+    "onCommand:extension.gitextensions.checkoutrevision",
+    "onCommand:extension.gitextensions.difftool",
+    "onCommand:extension.gitextensions.filehistory",
+    "onCommand:extension.gitextensions.init",
+    "onCommand:extension.gitextensions.pull",
+    "onCommand:extension.gitextensions.push",
+    "onCommand:extension.gitextensions.settings",
+    "onCommand:extension.gitextensions.tag",
+    "onCommand:extension.gitextensions.remotes"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.gitextensions.blame",
+        "title": "GitExtensions: Blame current file"
+      },
+      {
+        "command": "extension.gitextensions.branch",
+        "title": "GitExtensions: Create a branch"
+      },
+      {
+        "command": "extension.gitextensions.browse",
+        "title": "GitExtensions: Browse in GitExtensions"
+      },
+      {
+        "command": "extension.gitextensions.commit",
+        "title": "GitExtensions: Commit"
+      },
+      {
+        "command": "extension.gitextensions.checkoutbranch",
+        "title": "GitExtensions: Checkout a branch"
+      },
+      {
+        "command": "extension.gitextensions.checkoutrevision",
+        "title": "GitExtensions: Checkout a revision"
+      },
+      {
+        "command": "extension.gitextensions.difftool",
+        "title": "GitExtensions: See in Diff Tool"
+      },
+      {
+        "command": "extension.gitextensions.filehistory",
+        "title": "GitExtensions: See File History"
+      },
+      {
+        "command": "extension.gitextensions.init",
+        "title": "GitExtensions: Init a repository"
+      },
+      {
+        "command": "extension.gitextensions.pull",
+        "title": "GitExtensions: Pull commits"
+      },
+      {
+        "command": "extension.gitextensions.push",
+        "title": "GitExtensions: Push commits"
+      },
+      {
+        "command": "extension.gitextensions.settings",
+        "title": "GitExtensions: Open settings"
+      },
+      {
+        "command": "extension.gitextensions.tag",
+        "title": "GitExtensions: Create a tag"
+      },
+      {
+        "command": "extension.gitextensions.remotes",
+        "title": "GitExtensions: Manage remotes"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  }
 }
