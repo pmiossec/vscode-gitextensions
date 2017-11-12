@@ -1,39 +1,47 @@
 # vscode-gitextensions README
 
-This is the README for your extension "vscode-gitextensions". After writing up a brief description, we recommend including the following sections.
+This is the Visual Studio Code extension to use GitExtensions.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Commands available via the Command Palette:
 
-For example if there is an image subfolder under your extension project workspace:
+* GitExtensions: Blame current file
+* GitExtensions: Create a branch
+* GitExtensions: Browse in GitExtensions
+* GitExtensions: Commit
+* GitExtensions: Checkout a branch
+* GitExtensions: Checkout a revision
+* GitExtensions: See in Diff Tool
+* GitExtensions: See File History
+* GitExtensions: Init a repository
+* GitExtensions: Resolve merge in GitExtensions
+* GitExtensions: Pull commits
+* GitExtensions: Push commits
+* GitExtensions: Reset changes
+* GitExtensions: Open settings
+* GitExtensions: Manage stashs
+* GitExtensions: Synchronize (Commit / Pull / Push)
+* GitExtensions: Create a tag
+* GitExtensions: Manage remotes
 
-\!\[feature X\]\(images/feature-x.png\)
+## Intall
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+For the moment, dowload it in the `Release` Section and install it using:
+
+`code --install-extension vscode-gitextensions-0.0.1.vsix`
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+GitExtensions should be accessible in the PATH.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None at the moment (it's a work in progress)
 
 ## Release Notes
 
 ### 0.1.0
 
-Initial release of GitExtensions for Visual Studio Code
+* Initial release of GitExtensions for Visual Studio Code
 
