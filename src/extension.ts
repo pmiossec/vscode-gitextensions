@@ -69,14 +69,6 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.difftool", () => {
-      // console.log('context', context);
-      // child.exec(`echo %cd%`, (err, stdout, stderr) => {
-      //     console.log("stdout: " + stdout);
-      //     console.log("stderr: " + stderr);
-      //     if (err) {
-      //       console.error("error: " + err);
-      //     }
-      //   });
       const path = window.activeTextEditor.document.uri.fsPath;
       launchGitExtensions("difftool", path);
     })
@@ -93,6 +85,12 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("extension.gitextensions.init", () => {
       const path = vscode.workspace.workspaceFolders[0].uri.fsPath;
       launchGitExtensions("init", path);
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.gitextensions.mergetool", () => {
+      launchGitExtensions("mergetool");
     })
   );
 

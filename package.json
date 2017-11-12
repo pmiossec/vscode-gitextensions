@@ -18,6 +18,7 @@
     "onCommand:extension.gitextensions.difftool",
     "onCommand:extension.gitextensions.filehistory",
     "onCommand:extension.gitextensions.init",
+    "onCommand:extension.gitextensions.mergetool",
     "onCommand:extension.gitextensions.pull",
     "onCommand:extension.gitextensions.push",
     "onCommand:extension.gitextensions.settings",
@@ -62,6 +63,10 @@
       {
         "command": "extension.gitextensions.init",
         "title": "GitExtensions: Init a repository"
+      },
+      {
+        "command": "extension.gitextensions.mergetool",
+        "title": "GitExtensions: Resolve merge in GitExtensions"
       },
       {
         "command": "extension.gitextensions.pull",
