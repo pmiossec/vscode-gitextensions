@@ -136,8 +136,26 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
+    vscode.commands.registerCommand("extension.gitextensions.reset", () => {
+      launchGitExtensions("reset");
+    })
+  );
+
+  context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.settings", () => {
       launchGitExtensions("settings");
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.gitextensions.stash", () => {
+      launchGitExtensions("stash");
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.gitextensions.synchronize", () => {
+      launchGitExtensions("synchronize");
     })
   );
 

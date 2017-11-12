@@ -21,7 +21,10 @@
     "onCommand:extension.gitextensions.mergetool",
     "onCommand:extension.gitextensions.pull",
     "onCommand:extension.gitextensions.push",
+    "onCommand:extension.gitextensions.reset",
     "onCommand:extension.gitextensions.settings",
+    "onCommand:extension.gitextensions.stash",
+    "onCommand:extension.gitextensions.synchronize",
     "onCommand:extension.gitextensions.tag",
     "onCommand:extension.gitextensions.remotes"
   ],
@@ -77,8 +80,20 @@
         "title": "GitExtensions: Push commits"
       },
       {
+        "command": "extension.gitextensions.reset",
+        "title": "GitExtensions: Reset changes"
+      },
+      {
         "command": "extension.gitextensions.settings",
         "title": "GitExtensions: Open settings"
+      },
+      {
+        "command": "extension.gitextensions.stash",
+        "title": "GitExtensions: Manage stashs"
+      },
+      {
+        "command": "extension.gitextensions.synchronize",
+        "title": "GitExtensions: Synchronize (Commit / Pull / Push)"
       },
       {
         "command": "extension.gitextensions.tag",
