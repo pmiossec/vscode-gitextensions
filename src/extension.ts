@@ -56,6 +56,10 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.blame", () => {
+      if (window.activeTextEditor === undefined) {
+        vscode.window.showWarningMessage('No file selected.')
+        return;
+      }
       const path = window.activeTextEditor.document.uri.fsPath;
       launchGitExtensions("blame", path);
     })
@@ -94,6 +98,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.difftool", () => {
       if (window.activeTextEditor === undefined) {
+        vscode.window.showWarningMessage('No file selected.')
         return;
       }
       const filePath = window.activeTextEditor.document.uri.fsPath;
@@ -104,6 +109,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.filehistory", () => {
       if (window.activeTextEditor === undefined) {
+        vscode.window.showWarningMessage('No file selected.')
         return;
       }
       const filePath = window.activeTextEditor.document.uri.fsPath;
