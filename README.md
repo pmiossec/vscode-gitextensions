@@ -1,6 +1,6 @@
-# vscode-gitextensions README
+# Visual Studio Code extension for GitExtensions
 
-This is the Visual Studio Code extension to use GitExtensions.
+This is the Visual Studio Code extension to use [GitExtensions](http://gitextensions.github.io/).
 
 ## Features
 
@@ -25,15 +25,20 @@ Commands available via the Command Palette:
 * GitExtensions: Create a tag
 * GitExtensions: Manage remotes
 
+Commands available via the icons in the Status Bar:
+
+* GitExtensions: Browse in GitExtensions
+* GitExtensions: See File History
+
 ## Intall
 
-For the moment, dowload it in the `Release` Section and install it using:
-
-`code --install-extension vscode-gitextensions-0.0.1.vsix`
+For the moment, download it in the `Release` Section and install it using the command palette (`ctrl + shift + p`)
+and then select `Extensions: Install from VSIX...`
 
 ## Requirements
 
-GitExtensions should be accessible in the PATH.
+* GitExtensions should be accessible in the PATH.
+* Visual Studio Code v0.18
 
 ## Known Issues
 
@@ -41,7 +46,11 @@ None at the moment (it's a work in progress)
 
 ## Release Notes
 
+### 0.2.0
+
+* Commands in the status bar
+
 ### 0.1.0
 
-* Initial release of GitExtensions for Visual Studio Code
+* Initial release of GitExtensions for Visual Studio Code with command in the command palette
 
