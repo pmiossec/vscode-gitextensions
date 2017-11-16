@@ -1,7 +1,7 @@
 "use strict";
 import * as vscode from "vscode";
 import * as child from "child_process";
-import { window } from "vscode";
+import { window, StatusBarAlignment } from "vscode";
 
 const findWorkspaceFolder = () => {
   const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -49,6 +49,18 @@ export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log('Activing "vscode-gitextensions" extension.');
+
+  const statusHistory = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
+  statusHistory.command = 'extension.gitextensions.filehistory';
+  statusHistory.text = '$(history)';
+  statusHistory.tooltip = 'See current file history in GitExtensions';
+  statusHistory.show();
+
+	const statusBrowse = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
+  statusBrowse.command = 'extension.gitextensions.browse';
+  statusBrowse.text = '$(git-branch)';
+  statusBrowse.tooltip = 'Browse repository in GitExtensions';
+  statusBrowse.show();
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand

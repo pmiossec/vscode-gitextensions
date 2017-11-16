@@ -9,24 +9,7 @@
   },
   "categories": ["Other"],
   "activationEvents": [
-    "onCommand:extension.gitextensions.blame",
-    "onCommand:extension.gitextensions.branch",
-    "onCommand:extension.gitextensions.browse",
-    "onCommand:extension.gitextensions.commit",
-    "onCommand:extension.gitextensions.checkoutbranch",
-    "onCommand:extension.gitextensions.checkoutrevision",
-    "onCommand:extension.gitextensions.difftool",
-    "onCommand:extension.gitextensions.filehistory",
-    "onCommand:extension.gitextensions.init",
-    "onCommand:extension.gitextensions.mergetool",
-    "onCommand:extension.gitextensions.pull",
-    "onCommand:extension.gitextensions.push",
-    "onCommand:extension.gitextensions.reset",
-    "onCommand:extension.gitextensions.settings",
-    "onCommand:extension.gitextensions.stash",
-    "onCommand:extension.gitextensions.synchronize",
-    "onCommand:extension.gitextensions.tag",
-    "onCommand:extension.gitextensions.remotes"
+    "*"
   ],
   "main": "./out/extension",
   "contributes": {
