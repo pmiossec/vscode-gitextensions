@@ -25,7 +25,7 @@ Commands available via the Command Palette:
 * GitExtensions: Create a tag
 * GitExtensions: Manage remotes
 
-Commands available via the icons in the Status Bar:
+Commands available via the icons in the Status Bar (see VSCode settings to hide them):
 
 * GitExtensions: Browse in GitExtensions
 * GitExtensions: See File History
@@ -44,13 +44,4 @@ and then select `Extensions: Install from VSIX...`
 
 None at the moment (it's a work in progress)
 
-## Release Notes
-
-### 0.2.0
-
-* Commands in the status bar
-
-### 0.1.0
-
-* Initial release of GitExtensions for Visual Studio Code with command in the command palette
 

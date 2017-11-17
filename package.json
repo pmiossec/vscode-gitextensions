@@ -2,15 +2,37 @@
   "name": "vscode-gitextensions",
   "displayName": "GitExtensions",
   "description": "Open GitExtensions GUI from Visual Studio Code",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "author": {
+    "name": "Philippe Miossec",
+    "email": "pmiossec@gmail.com"
+  },
   "publisher": "pmiossec",
   "engines": {
     "vscode": "^1.18.0"
   },
   "categories": ["Other"],
+  "keywords": [
+    "gitextensions",
+    "git",
+    "multi-root ready"
+  ],
   "activationEvents": [
     "*"
   ],
+  "icon": "images/gitextensions-icon.png",
+  "galleryBanner": {
+    "color": "#8647ae",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/pmiossec/vscode-gitextensions/blob/master/README.md",
+  "bugs": {
+      "url": "https://github.com/pmiossec/vscode-gitextensions/issues"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/pmiossec/vscode-gitextensions.git"
+  },
   "main": "./out/extension",
   "contributes": {
     "configuration": [
