@@ -32,7 +32,7 @@ Commands available via the icons in the Status Bar:
 
 ## Intall
 
-For the moment, download it in the [Release](./Release) Section and install it using the command palette (`ctrl + shift + p`)
+For the moment, download it in the [Release](https://github.com/pmiossec/vscode-gitextensions/releases) section and install it using the command palette (`ctrl + shift + p`)
 and then select `Extensions: Install from VSIX...`
 
 ## Requirements
