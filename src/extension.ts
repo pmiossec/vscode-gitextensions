@@ -50,17 +50,23 @@ export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('Activing "vscode-gitextensions" extension.');
 
-  const statusHistory = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
-  statusHistory.command = 'extension.gitextensions.filehistory';
-  statusHistory.text = '$(history)';
-  statusHistory.tooltip = 'See current file history in GitExtensions';
-  statusHistory.show();
+  const shouldDisplayFileHistoryIcon = vscode.workspace.getConfiguration().get('gitExtensions.statusbar.filehistory');
+  if(shouldDisplayFileHistoryIcon) {
+    const statusHistory = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
+    statusHistory.command = 'extension.gitextensions.filehistory';
+    statusHistory.text = '$(history)';
+    statusHistory.tooltip = 'See current file history in GitExtensions';
+    statusHistory.show();
+  }
 
-	const statusBrowse = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
-  statusBrowse.command = 'extension.gitextensions.browse';
-  statusBrowse.text = '$(git-branch)';
-  statusBrowse.tooltip = 'Browse repository in GitExtensions';
-  statusBrowse.show();
+  const shouldDisplayBrowseIcon = vscode.workspace.getConfiguration().get('gitExtensions.statusbar.browse');
+  if(shouldDisplayBrowseIcon) {
+    const statusBrowse = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
+    statusBrowse.command = 'extension.gitextensions.browse';
+    statusBrowse.text = '$(git-branch)';
+    statusBrowse.tooltip = 'Browse repository in GitExtensions';
+    statusBrowse.show();
+  }
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand

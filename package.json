@@ -13,6 +13,25 @@
   ],
   "main": "./out/extension",
   "contributes": {
+    "configuration": [
+			{
+				"title": "GitExtensions configuration",
+				"properties": {
+					"gitExtensions.statusbar.browse": {
+						"type": "boolean",
+						"default": true,
+						"description": "Display the 'Browse in GitExtensions' icon in the status bar",
+						"scope": "window"
+					},
+					"gitExtensions.statusbar.filehistory": {
+						"type": "boolean",
+						"default": true,
+						"description": "Display the 'View file history in GitExtensions' icon in the status bar",
+						"scope": "window"
+					}
+				}
+			}
+],
     "commands": [
       {
         "command": "extension.gitextensions.blame",
