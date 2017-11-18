@@ -30,11 +30,6 @@ Commands available via the icons in the Status Bar (see VSCode settings to hide 
 * GitExtensions: Browse in GitExtensions
 * GitExtensions: See File History
 
-## Intall
-
-For the moment, download it in the [Release](https://github.com/pmiossec/vscode-gitextensions/releases) section and install it using the command palette (`ctrl + shift + p`)
-and then select `Extensions: Install from VSIX...`
-
 ## Requirements
 
 * GitExtensions should be accessible in the PATH.
