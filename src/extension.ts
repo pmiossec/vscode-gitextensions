@@ -1,7 +1,7 @@
 "use strict";
 import * as vscode from "vscode";
 import * as child from "child_process";
-import { window, StatusBarAlignment } from "vscode";
+import { window, StatusBarAlignment, FileSystemWatcher, Uri } from "vscode";
 
 const findWorkspaceFolder = () => {
   const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -73,13 +73,16 @@ export function activate(context: vscode.ExtensionContext) {
   // The commandId parameter must match the command field in package.json
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.blame", () => {
+    vscode.commands.registerCommand("extension.gitextensions.blame", (file: Uri) => {
+      if (file !== undefined) {
+        launchGitExtensions("blame", file.fsPath);
+        return;
+      }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      const path = window.activeTextEditor.document.uri.fsPath;
-      launchGitExtensions("blame", path);
+      launchGitExtensions("blame", window.activeTextEditor.document.uri.fsPath);
     })
   );
 
@@ -114,24 +117,30 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.difftool", () => {
+    vscode.commands.registerCommand("extension.gitextensions.difftool", (file: Uri) => {
+      if (file !== undefined) {
+        launchGitExtensions("difftool", file.fsPath);
+        return;
+      }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      const filePath = window.activeTextEditor.document.uri.fsPath;
-      launchGitExtensions("difftool", filePath);
+      launchGitExtensions("difftool", window.activeTextEditor.document.uri.fsPath);
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.filehistory", () => {
+    vscode.commands.registerCommand("extension.gitextensions.filehistory", (file: Uri) => {
+      if (file !== undefined) {
+        launchGitExtensions("filehistory", file.fsPath);
+        return;
+      }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      const filePath = window.activeTextEditor.document.uri.fsPath;
-      launchGitExtensions("filehistory", filePath);
+      launchGitExtensions("filehistory", window.activeTextEditor.document.uri.fsPath);
     })
   );
 
@@ -192,6 +201,20 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.remotes", () => {
       launchGitExtensions("remotes");
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.gitextensions.revert", (file: Uri) => {
+      if (file !== undefined) {
+        launchGitExtensions("revert", file.fsPath);
+        return;
+      }
+      if (window.activeTextEditor === undefined) {
+        vscode.window.showWarningMessage('No file selected.')
+        return;
+      }
+      launchGitExtensions("revert", window.activeTextEditor.document.uri.fsPath);
     })
   );
 }

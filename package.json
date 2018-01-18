@@ -2,7 +2,7 @@
   "name": "vscode-gitextensions",
   "displayName": "GitExtensions",
   "description": "Open GitExtensions GUI from Visual Studio Code",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": {
     "name": "Philippe Miossec",
     "email": "pmiossec@gmail.com"
@@ -11,7 +11,9 @@
   "engines": {
     "vscode": "^1.18.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "keywords": [
     "gitextensions",
     "git",
@@ -27,33 +29,81 @@
   },
   "homepage": "https://github.com/pmiossec/vscode-gitextensions/blob/master/README.md",
   "bugs": {
-      "url": "https://github.com/pmiossec/vscode-gitextensions/issues"
+    "url": "https://github.com/pmiossec/vscode-gitextensions/issues"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/pmiossec/vscode-gitextensions.git"
+    "type": "git",
+    "url": "https://github.com/pmiossec/vscode-gitextensions.git"
   },
   "main": "./out/extension",
   "contributes": {
     "configuration": [
-			{
-				"title": "GitExtensions configuration",
-				"properties": {
-					"gitExtensions.statusbar.browse": {
-						"type": "boolean",
-						"default": true,
-						"description": "Display the 'Browse in GitExtensions' icon in the status bar",
-						"scope": "window"
-					},
-					"gitExtensions.statusbar.filehistory": {
-						"type": "boolean",
-						"default": true,
-						"description": "Display the 'View file history in GitExtensions' icon in the status bar",
-						"scope": "window"
-					}
-				}
-			}
-],
+      {
+        "title": "GitExtensions configuration",
+        "properties": {
+          "gitExtensions.statusbar.browse": {
+            "type": "boolean",
+            "default": true,
+            "description": "Display the 'Browse in GitExtensions' icon in the status bar",
+            "scope": "window"
+          },
+          "gitExtensions.statusbar.filehistory": {
+            "type": "boolean",
+            "default": true,
+            "description": "Display the 'View file history in GitExtensions' icon in the status bar",
+            "scope": "window"
+          },
+          "gitExtensions.explorer.contextmenu": {
+            "type": "boolean",
+            "default": true,
+            "description": "Display the GitExtensions commands in the explorer contextual menu",
+            "scope": "window"
+          },
+          "gitExtensions.editor.contextmenu": {
+            "type": "boolean",
+            "default": true,
+            "description": "Display the GitExtensions commands in the editor contextual menu",
+            "scope": "window"
+          }
+        }
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.gitextensions.filehistory",
+          "group": "gitextensions@1",
+          "when": "config.gitExtensions.explorer.contextmenu"
+        },
+        {
+          "command": "extension.gitextensions.difftool",
+          "group": "gitextensions@2",
+          "when": "config.gitExtensions.explorer.contextmenu"
+        },
+        {
+          "command": "extension.gitextensions.revert",
+          "group": "gitextensions@3",
+          "when": "config.gitExtensions.explorer.contextmenu"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.gitextensions.filehistory",
+          "group": "gitextensions@1",
+          "when": "config.gitExtensions.editor.contextmenu"
+        },
+        {
+          "command": "extension.gitextensions.difftool",
+          "group": "gitextensions@2",
+          "when": "config.gitExtensions.editor.contextmenu"
+        },
+        {
+          "command": "extension.gitextensions.revert",
+          "group": "gitextensions@3",
+          "when": "config.gitExtensions.editor.contextmenu"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "extension.gitextensions.blame",
@@ -126,6 +176,10 @@
       {
         "command": "extension.gitextensions.remotes",
         "title": "GitExtensions: Manage remotes"
+      },
+      {
+        "command": "extension.gitextensions.revert",
+        "title": "GitExtensions: Revert changes"
       }
     ]
   },

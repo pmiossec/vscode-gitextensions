@@ -30,6 +30,13 @@ Commands available via the icons in the Status Bar (see VSCode settings to hide 
 * GitExtensions: Browse in GitExtensions
 * GitExtensions: See File History
 
+
+Commands available via the explorer and editor contextal menus (see VSCode settings to hide them):
+
+* GitExtensions: See in Diff Tool
+* GitExtensions: See File History
+* GitExtensions: Revert changes
+
 ## Requirements
 
 * GitExtensions should be accessible in the PATH.
