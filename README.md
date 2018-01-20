@@ -31,11 +31,13 @@ Commands available via the icons in the Status Bar (see VSCode settings to hide 
 * GitExtensions: See File History
 
 
-Commands available via the explorer and editor contextal menus (see VSCode settings to hide them):
+Commands available via the `explorer`, the `editor` and the `editor title` contextal menus :
 
 * GitExtensions: See in Diff Tool
 * GitExtensions: See File History
 * GitExtensions: Revert changes
+
+These contextual menus could be easily hidden with VSCode settings `config.gitExtensions.explorer.contextmenu`, `config.gitExtensions.editor.title.contextmenu` and `config.gitExtensions.editor.contextmenu`.
 
 ## Requirements
 

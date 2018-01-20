@@ -59,6 +59,12 @@
             "description": "Display the GitExtensions commands in the explorer contextual menu",
             "scope": "window"
           },
+          "gitExtensions.editor.title.contextmenu": {
+            "type": "boolean",
+            "default": true,
+            "description": "Display the GitExtensions commands in the editor title contextual menu",
+            "scope": "window"
+          },
           "gitExtensions.editor.contextmenu": {
             "type": "boolean",
             "default": true,
@@ -84,6 +90,23 @@
           "command": "extension.gitextensions.revert",
           "group": "gitextensions@3",
           "when": "config.gitExtensions.explorer.contextmenu"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "extension.gitextensions.filehistory",
+          "group": "gitextensions@1",
+          "when": "config.gitExtensions.editor.title.contextmenu"
+        },
+        {
+          "command": "extension.gitextensions.difftool",
+          "group": "gitextensions@2",
+          "when": "config.gitExtensions.editor.title.contextmenu"
+        },
+        {
+          "command": "extension.gitextensions.revert",
+          "group": "gitextensions@3",
+          "when": "config.gitExtensions.editor.title.contextmenu"
         }
       ],
       "editor/context": [
