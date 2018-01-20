@@ -41,7 +41,7 @@ These contextual menus could be easily hidden with VSCode settings `config.gitEx
 
 ## Requirements
 
-* GitExtensions should be accessible in the PATH.
+* GitExtensions should be accessible in the PATH or configured in VSCode setting `gitExtensions.exe.path`.
 * Visual Studio Code v0.18
 
 ## Known Issues

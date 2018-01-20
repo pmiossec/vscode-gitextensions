@@ -21,7 +21,7 @@ const findWorkspaceFolder = () => {
   return folder.uri.fsPath;
 }
 
-const launchGitExtensions = (command: string, args: string = '') => {
+const launchGitExtensions = (gitExtensionsPath: string, command: string, args: string = '') => {
   console.log(vscode.workspace.workspaceFolders);
   const path: string = findWorkspaceFolder();
   if(path === null)
@@ -30,7 +30,8 @@ const launchGitExtensions = (command: string, args: string = '') => {
     return;
   }
 
-  child.exec(`gitExtensions ${command} ${args}`, { cwd: path} , (err, stdout, stderr) => {
+  const exe = gitExtensionsPath ? `"${gitExtensionsPath}"` : 'gitExtensions';
+  child.exec(`${exe} ${command} ${args}`, { cwd: path} , (err, stdout, stderr) => {
     if (stdout) {
       console.log("[GitExtensions] stdout: " + stdout);
     }
@@ -50,7 +51,9 @@ export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('Activing "vscode-gitextensions" extension.');
 
-  const shouldDisplayFileHistoryIcon = vscode.workspace.getConfiguration().get('gitExtensions.statusbar.filehistory');
+  const config = vscode.workspace.getConfiguration();
+  const gitExtensionsPath = config.get<string>('gitExtensions.exe.path');
+  const shouldDisplayFileHistoryIcon = config.get<boolean>('gitExtensions.statusbar.filehistory');
   if(shouldDisplayFileHistoryIcon) {
     const statusHistory = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
     statusHistory.command = 'extension.gitextensions.filehistory';
@@ -59,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
     statusHistory.show();
   }
 
-  const shouldDisplayBrowseIcon = vscode.workspace.getConfiguration().get('gitExtensions.statusbar.browse');
+  const shouldDisplayBrowseIcon = config.get<boolean>('gitExtensions.statusbar.browse');
   if(shouldDisplayBrowseIcon) {
     const statusBrowse = window.createStatusBarItem(vscode.StatusBarAlignment.Right, 500);
     statusBrowse.command = 'extension.gitextensions.browse';
@@ -75,146 +78,146 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.blame", (file: Uri) => {
       if (file !== undefined) {
-        launchGitExtensions("blame", file.fsPath);
+        launchGitExtensions(gitExtensionsPath, "blame", file.fsPath);
         return;
       }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      launchGitExtensions("blame", window.activeTextEditor.document.uri.fsPath);
+      launchGitExtensions(gitExtensionsPath, "blame", window.activeTextEditor.document.uri.fsPath);
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.branch", () => {
-      launchGitExtensions("branch");
+      launchGitExtensions(gitExtensionsPath, "branch");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.browse", () => {
-      launchGitExtensions("browse");
+      launchGitExtensions(gitExtensionsPath, "browse");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.commit", () => {
-      launchGitExtensions("commit");
+      launchGitExtensions(gitExtensionsPath, "commit");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.checkoutbranch", () => {
-      launchGitExtensions("checkoutbranch");
+      launchGitExtensions(gitExtensionsPath, "checkoutbranch");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.checkoutrevision", () => {
-      launchGitExtensions("checkoutrevision");
+      launchGitExtensions(gitExtensionsPath, "checkoutrevision");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.difftool", (file: Uri) => {
       if (file !== undefined) {
-        launchGitExtensions("difftool", file.fsPath);
+        launchGitExtensions(gitExtensionsPath, "difftool", file.fsPath);
         return;
       }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      launchGitExtensions("difftool", window.activeTextEditor.document.uri.fsPath);
+      launchGitExtensions(gitExtensionsPath, "difftool", window.activeTextEditor.document.uri.fsPath);
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.filehistory", (file: Uri) => {
       if (file !== undefined) {
-        launchGitExtensions("filehistory", file.fsPath);
+        launchGitExtensions(gitExtensionsPath, "filehistory", file.fsPath);
         return;
       }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      launchGitExtensions("filehistory", window.activeTextEditor.document.uri.fsPath);
+      launchGitExtensions(gitExtensionsPath, "filehistory", window.activeTextEditor.document.uri.fsPath);
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.init", () => {
-      launchGitExtensions("init", findWorkspaceFolder());
+      launchGitExtensions(gitExtensionsPath, "init", findWorkspaceFolder());
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.mergetool", () => {
-      launchGitExtensions("mergetool");
+      launchGitExtensions(gitExtensionsPath, "mergetool");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.pull", () => {
-      launchGitExtensions("pull");
+      launchGitExtensions(gitExtensionsPath, "pull");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.push", () => {
-      launchGitExtensions("push");
+      launchGitExtensions(gitExtensionsPath, "push");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.reset", () => {
-      launchGitExtensions("reset");
+      launchGitExtensions(gitExtensionsPath, "reset");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.settings", () => {
-      launchGitExtensions("settings");
+      launchGitExtensions(gitExtensionsPath, "settings");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.stash", () => {
-      launchGitExtensions("stash");
+      launchGitExtensions(gitExtensionsPath, "stash");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.synchronize", () => {
-      launchGitExtensions("synchronize");
+      launchGitExtensions(gitExtensionsPath, "synchronize");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.tag", () => {
-      launchGitExtensions("tag");
+      launchGitExtensions(gitExtensionsPath, "tag");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.remotes", () => {
-      launchGitExtensions("remotes");
+      launchGitExtensions(gitExtensionsPath, "remotes");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.revert", (file: Uri) => {
       if (file !== undefined) {
-        launchGitExtensions("revert", file.fsPath);
+        launchGitExtensions(gitExtensionsPath, "revert", file.fsPath);
         return;
       }
       if (window.activeTextEditor === undefined) {
         vscode.window.showWarningMessage('No file selected.')
         return;
       }
-      launchGitExtensions("revert", window.activeTextEditor.document.uri.fsPath);
+      launchGitExtensions(gitExtensionsPath, "revert", window.activeTextEditor.document.uri.fsPath);
     })
   );
 }

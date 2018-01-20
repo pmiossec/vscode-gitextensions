@@ -76,6 +76,12 @@
             "default": true,
             "description": "Display the GitExtensions commands in the SCM title menu",
             "scope": "window"
+          },
+          "gitExtensions.exe.path": {
+            "type": "string",
+            "default": "",
+            "description": "Path toward the GitExtensions executable (if GitExtensions is not already in the PATH env variable)",
+            "scope": "window"
           }
         }
       }
