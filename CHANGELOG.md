@@ -4,6 +4,7 @@ All notable changes to the `vscode-gitextensions` extension will be documented i
 ## Release Notes
 ## [0.5.0]
 ### Added
+- Add `Browse` command in SCM title menu
 - Add 3 commands (History, Diff tool and revert) also in the Editor title context menu
 - Being able to hidden items in contextual menu with settings `gitExtensions.editor.title.contextmenu`
 

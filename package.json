@@ -70,6 +70,12 @@
             "default": true,
             "description": "Display the GitExtensions commands in the editor contextual menu",
             "scope": "window"
+          },
+          "gitExtensions.scm.title.menu": {
+            "type": "boolean",
+            "default": true,
+            "description": "Display the GitExtensions commands in the SCM title menu",
+            "scope": "window"
           }
         }
       }
@@ -124,6 +130,14 @@
           "command": "extension.gitextensions.revert",
           "group": "gitextensions@3",
           "when": "config.gitExtensions.editor.contextmenu"
+        }
+      ],
+      "scm/title": [
+        {
+          "command": "extension.gitextensions.browse",
+          "title": "GitExtensions: Browse in GitExtensions",
+          "group": "gitextensions",
+          "when": "config.gitExtensions.scm.title.menu"
         }
       ]
     },
