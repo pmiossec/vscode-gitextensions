@@ -141,7 +141,13 @@
       "scm/title": [
         {
           "command": "extension.gitextensions.browse",
-          "title": "GitExtensions: Browse in GitExtensions",
+          "title": "GitExtensions: Browse repository",
+          "group": "gitextensions",
+          "when": "config.gitExtensions.scm.title.menu"
+        },
+        {
+          "command": "extension.gitextensions.commit",
+          "title": "GitExtensions: Commit",
           "group": "gitextensions",
           "when": "config.gitExtensions.scm.title.menu"
         }
@@ -158,7 +164,7 @@
       },
       {
         "command": "extension.gitextensions.browse",
-        "title": "GitExtensions: Browse in GitExtensions"
+        "title": "GitExtensions: Browse repository"
       },
       {
         "command": "extension.gitextensions.commit",
