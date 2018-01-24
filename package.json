@@ -2,7 +2,7 @@
   "name": "vscode-gitextensions",
   "displayName": "GitExtensions",
   "description": "Open GitExtensions GUI from Visual Studio Code",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": {
     "name": "Philippe Miossec",
     "email": "pmiossec@gmail.com"

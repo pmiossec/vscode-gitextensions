@@ -8,7 +8,7 @@ Commands available via the Command Palette:
 
 * GitExtensions: Blame current file
 * GitExtensions: Create a branch
-* GitExtensions: Browse in GitExtensions
+* GitExtensions: Browse repository
 * GitExtensions: Commit
 * GitExtensions: Checkout a branch
 * GitExtensions: Checkout a revision
@@ -27,17 +27,21 @@ Commands available via the Command Palette:
 
 Commands available via the icons in the Status Bar (see VSCode settings to hide them):
 
-* GitExtensions: Browse in GitExtensions
+* GitExtensions: Browse repository
 * GitExtensions: See File History
 
 
-Commands available via the `explorer`, the `editor` and the `editor title` contextal menus :
+Commands available via the `explorer`, the `editor` and the `editor title` contextual menus :
 
 * GitExtensions: See in Diff Tool
 * GitExtensions: See File History
 * GitExtensions: Revert changes
 
-These contextual menus could be easily hidden with VSCode settings `config.gitExtensions.explorer.contextmenu`, `config.gitExtensions.editor.title.contextmenu` and `config.gitExtensions.editor.contextmenu`.
+Commands available via the `Source Control Management` title menu :
+* GitExtensions: Browse repository
+* GitExtensions: Commit
+
+These contextual menus could be easily hidden with VSCode settings `config.gitExtensions.explorer.contextmenu`, `config.gitExtensions.editor.title.contextmenu`,  `config.gitExtensions.editor.contextmenu` and `gitExtensions.scm.title.menu`.
 
 ## Requirements
 

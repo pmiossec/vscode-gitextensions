@@ -2,6 +2,14 @@
 All notable changes to the `vscode-gitextensions` extension will be documented in this file.
 
 ## Release Notes
+## [0.6.1]
+### Added
+- Update and Add forgotten changelog and Readme
+
+## [0.6.0]
+### Added
+- Add `Commit` command in SCM title menu
+
 ## [0.5.0]
 ### Added
 - New setting (`gitExtensions.exe.path`) to be able to specify the path toward GitExtensions executable
