@@ -55,10 +55,10 @@ const launchCommand = (gitExtensionsPath: string, command: string, args: string 
   });
 };
 
-const registerCommand = (context: vscode.ExtensionContext, gitExtensionsPath: string, commandKey: string, command: string) => {
+const registerCommand = (context: vscode.ExtensionContext, gitExtensionsPath: string, commandKey: string, command: string, args?: string) => {
   context.subscriptions.push(
     vscode.commands.registerCommand(commandKey, () => {
-      launchCommand(gitExtensionsPath, command);
+      launchCommand(gitExtensionsPath, command, args);
     })
   );
 };
@@ -100,11 +100,7 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand
   // The commandId parameter must match the command field in package.json
-  context.subscriptions.push(
-    vscode.commands.registerCommand('extension.gitextensions.init', () => {
-      launchCommand(gitExtensionsPath, 'init', findWorkspaceFolder());
-    })
-  );
+  registerCommand(context, gitExtensionsPath, 'extension.gitextensions.init', 'init', findWorkspaceFolder());
 
   registerCommand(context, gitExtensionsPath, 'extension.gitextensions.branch', 'branch');
   registerCommand(context, gitExtensionsPath, 'extension.gitextensions.browse', 'browse');
