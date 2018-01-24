@@ -56,6 +56,21 @@ const launchCommand = (gitExtensionsPath: string, command: string, args: string 
   });
 };
 
+const registerCommand = (context: vscode.ExtensionContext, gitExtensionsPath :string, commandKey: string, command: string) => {
+  context.subscriptions.push(
+    vscode.commands.registerCommand(commandKey, () => {
+      launchCommand(gitExtensionsPath, command);
+    })
+  );
+}
+
+const registerCommandOnFile = (context: vscode.ExtensionContext, gitExtensionsPath :string, commandKey: string, command: string) => {
+  context.subscriptions.push(
+    vscode.commands.registerCommand(commandKey, (file: Uri) => {
+      launchCommandOnFile(gitExtensionsPath, command, file);
+    })
+  );
+}
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -86,119 +101,31 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand
   // The commandId parameter must match the command field in package.json
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.blame", (file: Uri) => {
-      launchCommandOnFile(gitExtensionsPath, "blame", file);
-    }));
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.branch", () => {
-      launchCommand(gitExtensionsPath, "branch");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.browse", () => {
-      launchCommand(gitExtensionsPath, "browse");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.commit", () => {
-      launchCommand(gitExtensionsPath, "commit");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.checkoutbranch", () => {
-      launchCommand(gitExtensionsPath, "checkoutbranch");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.checkoutrevision", () => {
-      launchCommand(gitExtensionsPath, "checkoutrevision");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.difftool", (file: Uri) => {
-      launchCommandOnFile(gitExtensionsPath, "difftool", file);
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.filehistory", (file: Uri) => {
-      launchCommandOnFile(gitExtensionsPath, "filehistory", file);
-    })
-  );
-
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.init", () => {
       launchCommand(gitExtensionsPath, "init", findWorkspaceFolder());
     })
   );
 
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.mergetool", () => {
-      launchCommand(gitExtensionsPath, "mergetool");
-    })
-  );
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.branch", "branch");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.browse", "browse");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.commit", "commit");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.checkoutbranch", "checkoutbranch");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.checkoutrevision", "checkoutrevision");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.mergetool", "mergetool");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.pull", "pull");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.push", "push");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.reset", "reset");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.settings", "settings");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.stash", "stash");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.synchronize", "synchronize");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.tag", "tag");
+  registerCommand(context, gitExtensionsPath, "extension.gitextensions.remotes", "remotes");
 
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.pull", () => {
-      launchCommand(gitExtensionsPath, "pull");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.push", () => {
-      launchCommand(gitExtensionsPath, "push");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.reset", () => {
-      launchCommand(gitExtensionsPath, "reset");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.settings", () => {
-      launchCommand(gitExtensionsPath, "settings");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.stash", () => {
-      launchCommand(gitExtensionsPath, "stash");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.synchronize", () => {
-      launchCommand(gitExtensionsPath, "synchronize");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.tag", () => {
-      launchCommand(gitExtensionsPath, "tag");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.remotes", () => {
-      launchCommand(gitExtensionsPath, "remotes");
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("extension.gitextensions.revert", (file: Uri) => {
-      launchCommandOnFile(gitExtensionsPath, "revert", file);
-    })
-  );
+  registerCommandOnFile(context, gitExtensionsPath, "extension.gitextensions.blame", "blame");
+  registerCommandOnFile(context, gitExtensionsPath, "extension.gitextensions.difftool", "difftool");
+  registerCommandOnFile(context, gitExtensionsPath, "extension.gitextensions.filehistory", "filehistory");
+  registerCommandOnFile(context, gitExtensionsPath, "extension.gitextensions.revert", "revert");
 }
 
 // this method is called when your extension is deactivated
