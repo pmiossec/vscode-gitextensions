@@ -21,7 +21,19 @@ const findWorkspaceFolder = () => {
   return folder.uri.fsPath;
 }
 
-const launchGitExtensions = (gitExtensionsPath: string, command: string, args: string = '') => {
+const launchCommandOnFile = (gitExtensionsPath: string, command: string, file: Uri) => {
+  if (file !== undefined) {
+    launchCommand(gitExtensionsPath, command, file.fsPath);
+    return;
+  }
+  if (window.activeTextEditor === undefined) {
+    vscode.window.showWarningMessage('No file selected.')
+    return;
+  }
+  launchCommand(gitExtensionsPath, command, window.activeTextEditor.document.uri.fsPath);
+}
+
+const launchCommand = (gitExtensionsPath: string, command: string, args: string = '') => {
   console.log(vscode.workspace.workspaceFolders);
   const path: string = findWorkspaceFolder();
   if(path === null)
@@ -77,147 +89,114 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.blame", (file: Uri) => {
-      if (file !== undefined) {
-        launchGitExtensions(gitExtensionsPath, "blame", file.fsPath);
-        return;
-      }
-      if (window.activeTextEditor === undefined) {
-        vscode.window.showWarningMessage('No file selected.')
-        return;
-      }
-      launchGitExtensions(gitExtensionsPath, "blame", window.activeTextEditor.document.uri.fsPath);
-    })
-  );
+      launchCommandOnFile(gitExtensionsPath, "blame", file);
+    }));
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.branch", () => {
-      launchGitExtensions(gitExtensionsPath, "branch");
+      launchCommand(gitExtensionsPath, "branch");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.browse", () => {
-      launchGitExtensions(gitExtensionsPath, "browse");
+      launchCommand(gitExtensionsPath, "browse");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.commit", () => {
-      launchGitExtensions(gitExtensionsPath, "commit");
+      launchCommand(gitExtensionsPath, "commit");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.checkoutbranch", () => {
-      launchGitExtensions(gitExtensionsPath, "checkoutbranch");
+      launchCommand(gitExtensionsPath, "checkoutbranch");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.checkoutrevision", () => {
-      launchGitExtensions(gitExtensionsPath, "checkoutrevision");
+      launchCommand(gitExtensionsPath, "checkoutrevision");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.difftool", (file: Uri) => {
-      if (file !== undefined) {
-        launchGitExtensions(gitExtensionsPath, "difftool", file.fsPath);
-        return;
-      }
-      if (window.activeTextEditor === undefined) {
-        vscode.window.showWarningMessage('No file selected.')
-        return;
-      }
-      launchGitExtensions(gitExtensionsPath, "difftool", window.activeTextEditor.document.uri.fsPath);
+      launchCommandOnFile(gitExtensionsPath, "difftool", file);
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.filehistory", (file: Uri) => {
-      if (file !== undefined) {
-        launchGitExtensions(gitExtensionsPath, "filehistory", file.fsPath);
-        return;
-      }
-      if (window.activeTextEditor === undefined) {
-        vscode.window.showWarningMessage('No file selected.')
-        return;
-      }
-      launchGitExtensions(gitExtensionsPath, "filehistory", window.activeTextEditor.document.uri.fsPath);
+      launchCommandOnFile(gitExtensionsPath, "filehistory", file);
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.init", () => {
-      launchGitExtensions(gitExtensionsPath, "init", findWorkspaceFolder());
+      launchCommand(gitExtensionsPath, "init", findWorkspaceFolder());
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.mergetool", () => {
-      launchGitExtensions(gitExtensionsPath, "mergetool");
+      launchCommand(gitExtensionsPath, "mergetool");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.pull", () => {
-      launchGitExtensions(gitExtensionsPath, "pull");
+      launchCommand(gitExtensionsPath, "pull");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.push", () => {
-      launchGitExtensions(gitExtensionsPath, "push");
+      launchCommand(gitExtensionsPath, "push");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.reset", () => {
-      launchGitExtensions(gitExtensionsPath, "reset");
+      launchCommand(gitExtensionsPath, "reset");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.settings", () => {
-      launchGitExtensions(gitExtensionsPath, "settings");
+      launchCommand(gitExtensionsPath, "settings");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.stash", () => {
-      launchGitExtensions(gitExtensionsPath, "stash");
+      launchCommand(gitExtensionsPath, "stash");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.synchronize", () => {
-      launchGitExtensions(gitExtensionsPath, "synchronize");
+      launchCommand(gitExtensionsPath, "synchronize");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.tag", () => {
-      launchGitExtensions(gitExtensionsPath, "tag");
+      launchCommand(gitExtensionsPath, "tag");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.remotes", () => {
-      launchGitExtensions(gitExtensionsPath, "remotes");
+      launchCommand(gitExtensionsPath, "remotes");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.gitextensions.revert", (file: Uri) => {
-      if (file !== undefined) {
-        launchGitExtensions(gitExtensionsPath, "revert", file.fsPath);
-        return;
-      }
-      if (window.activeTextEditor === undefined) {
-        vscode.window.showWarningMessage('No file selected.')
-        return;
-      }
-      launchGitExtensions(gitExtensionsPath, "revert", window.activeTextEditor.document.uri.fsPath);
+      launchCommandOnFile(gitExtensionsPath, "revert", file);
     })
   );
 }
