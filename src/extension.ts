@@ -6,7 +6,7 @@ import { window, StatusBarAlignment, FileSystemWatcher, Uri } from 'vscode';
 const findWorkspaceFolder = () => {
   const workspaceFolders = vscode.workspace.workspaceFolders;
 
-  if (workspaceFolders.length == 0) {
+  if (workspaceFolders === null || workspaceFolders.length == 0) {
     return null;
   }
   if (workspaceFolders.length == 1) {

@@ -2,6 +2,10 @@
 All notable changes to the `vscode-gitextensions` extension will be documented in this file.
 
 ## Release Notes
+## [0.7.0]
+### Added
+- Update dependencies (due to potential security vulnerabilities found in vscode extensions dependencies)
+
 ## [0.6.1]
 ### Added
 - Update and Add forgotten changelog and Readme
