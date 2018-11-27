@@ -2,9 +2,13 @@
 All notable changes to the `vscode-gitextensions` extension will be documented in this file.
 
 ## Release Notes
+## [0.8.0]
+### Fix
+- Update dependencies (due to potential security vulnerabilities found in vscode extension dependency `event-stream` that introduce malicious package `flatmap-stream`)
+
 ## [0.7.0]
 ### Added
-- Update dependencies (due to potential security vulnerabilities found in vscode extensions dependencies)
+- Update dependencies (due to potential security vulnerabilities found in vscode extension dependencies)
 
 ## [0.6.1]
 ### Added
