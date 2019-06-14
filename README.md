@@ -1,6 +1,6 @@
 # Visual Studio Code extension for GitExtensions
 
-This is the Visual Studio Code extension to use [GitExtensions](http://gitextensions.github.io/).
+This is the [Visual Studio Code](https://code.visualstudio.com/) extension to use [Git Extensions](http://gitextensions.github.io/) (on [GitHub](https://github.com/gitextensions/gitextensions)).
 
 ## Features
 
