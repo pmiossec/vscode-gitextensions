@@ -2,6 +2,10 @@
 All notable changes to the `vscode-gitextensions` extension will be documented in this file.
 
 ## Release Notes
+## [1.1.0]
+### Fix
+- File History: Fix handling of paths with spaces inside it
+
 ## [0.8.0]
 ### Fix
 - Update dependencies (due to potential security vulnerabilities found in vscode extension dependency `event-stream` that introduce malicious package `flatmap-stream`)
