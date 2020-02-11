@@ -23,7 +23,7 @@ const findWorkspaceFolder = () => {
 
 const launchCommandOnFile = (gitExtensionsPath: string, command: string, file: Uri) => {
   if (file !== undefined) {
-    launchCommand(gitExtensionsPath, command, file.fsPath);
+    launchCommand(gitExtensionsPath, command, `"${file.fsPath}"`);
     return;
   }
   if (window.activeTextEditor === undefined) {
