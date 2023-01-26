@@ -27,15 +27,19 @@
     "publish": "vsce publish"
   },
   "categories": [
-    "Other"
+    "Other",
+    "SCM Providers"
   ],
   "keywords": [
     "gitextensions",
+    "GitExt",
+    "GitExtensions",
+    "Git Extensions",
     "git",
     "multi-root ready"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "icon": "images/gitextensions-icon.png",
   "galleryBanner": {

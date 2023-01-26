@@ -2,6 +2,10 @@
 All notable changes to the `vscode-gitextensions` extension will be documented in this file.
 
 ## Release Notes
+## [1.3.0]
+### Fix
+- Update all dependencies to last version (to fix known security vulnerabilities)
+
 ## [1.1.0]
 ### Fix
 - File History: Fix handling of paths with spaces inside it
