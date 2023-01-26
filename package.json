@@ -13,12 +13,17 @@
     "vscode": "^1.74.0"
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test",
-    "package": "vsce package",
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "test-extension": "npm run compile && node ./node_modules/vscode/bin/test",
+    "package-ext": "vsce package",
     "publish": "vsce publish"
   },
   "categories": [
@@ -243,11 +248,20 @@
     ]
   },
   "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.2.0",
     "typescript": "^4.9.4",
-    "@vscode/vsce": "^2.16.0",
-    "@types/vscode": "^1.74.0",
-    "mocha": "^10.2.0"
+    "ts-loader": "^9.4.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "@vscode/test-electron": "^2.2.0",
+    "@vscode/vsce": "^2.16.0"
   }
 }

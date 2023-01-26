@@ -6,7 +6,7 @@ import { window, StatusBarAlignment, FileSystemWatcher, Uri } from 'vscode';
 const findWorkspaceFolder = () => {
   const workspaceFolders = vscode.workspace.workspaceFolders;
 
-  if (workspaceFolders === null || workspaceFolders.length == 0) {
+  if (workspaceFolders === undefined || workspaceFolders.length == 0) {
     return null;
   }
   if (workspaceFolders.length == 1) {
@@ -16,9 +16,9 @@ const findWorkspaceFolder = () => {
     return workspaceFolders[0].uri.fsPath;
   }
   const currentDocument = window.activeTextEditor.document.uri.fsPath;
-  const folder = vscode.workspace.workspaceFolders.find(w => currentDocument.startsWith(w.uri.fsPath));
+  const folder = workspaceFolders.find(w => currentDocument.startsWith(w.uri.fsPath));
   console.log('folder', folder);
-  return folder.uri.fsPath;
+  return folder === undefined ? null : folder.uri.fsPath;
 };
 
 const launchCommandOnFile = (gitExtensionsPath: string, command: string, file: Uri) => {
@@ -35,7 +35,7 @@ const launchCommandOnFile = (gitExtensionsPath: string, command: string, file: U
 
 const launchCommand = (gitExtensionsPath: string, command: string, args: string = '') => {
   console.log(vscode.workspace.workspaceFolders);
-  const path: string = findWorkspaceFolder();
+  const path: string | null = findWorkspaceFolder();
   if (path === null) {
     console.error('No current folder found!');
     return;
@@ -97,10 +97,20 @@ export function activate(context: vscode.ExtensionContext) {
     statusBrowse.show();
   }
 
+  if (gitExtensionsPath === undefined)
+  {
+    return;
+  }
+
+  const workspaceFolder = findWorkspaceFolder();
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand
   // The commandId parameter must match the command field in package.json
-  registerCommand(context, gitExtensionsPath, 'extension.gitextensions.init', 'init', findWorkspaceFolder());
+
+  if (workspaceFolder !== null)
+  {
+    registerCommand(context, gitExtensionsPath, 'extension.gitextensions.init', 'init', workspaceFolder);
+  }
 
   registerCommand(context, gitExtensionsPath, 'extension.gitextensions.branch', 'branch');
   registerCommand(context, gitExtensionsPath, 'extension.gitextensions.browse', 'browse');
