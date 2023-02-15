@@ -2,9 +2,15 @@
 
 This is the [Visual Studio Code](https://code.visualstudio.com/) extension to use [Git Extensions](http://gitextensions.github.io/) (on [GitHub](https://github.com/gitextensions/gitextensions)).
 
+It integrates all the Git Extensions command line features available in Visual Studio Code.
+
+[![...](https://img.shields.io/visual-studio-marketplace/i/pmiossec.vscode-gitextensions?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=pmiossec.vscode-gitextensions) [![...](https://img.shields.io/visual-studio-marketplace/r/pmiossec.vscode-gitextensions?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=pmiossec.vscode-gitextensions&ssr=false#review-details) [![...](https://img.shields.io/visual-studio-marketplace/v/pmiossec.vscode-gitextensions?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=pmiossec.vscode-gitextensions&ssr=false#version-history)
+
 ## Features
 
-Commands available via the Command Palette:
+### Integration in the Command Palette
+
+All the GitExtensions commands are available via the Command Palette:
 
 * GitExtensions: Blame current file
 * GitExtensions: Create a branch
@@ -25,9 +31,11 @@ Commands available via the Command Palette:
 * GitExtensions: Create a tag
 * GitExtensions: Manage remotes
 
-Commands in command palette:
+Preview of the commands in the Command Palette:
+
 ![In command palette](https://github.com/pmiossec/vscode-gitextensions/raw/master/doc/extensions_command_palette.jpg)
 
+### Integration in the Status Bar
 
 Commands available via the icons in the Status Bar (see VSCode settings to hide them):
 
@@ -35,32 +43,46 @@ Commands available via the icons in the Status Bar (see VSCode settings to hide 
 * GitExtensions: See File History
 
 Icons in the status bar:
+
 ![In status bar](https://github.com/pmiossec/vscode-gitextensions/raw/master/doc/extensions_status_bar.jpg)
 
+### Integration in the File Explorer
 
-Commands available via the `explorer`, the `editor` and the `editor title` contextual menus :
+Commands available via the `explorer` contextual menus :
 
 * GitExtensions: See in Diff Tool
 * GitExtensions: See File History
 * GitExtensions: Revert changes
 
 Commands in the explorer:
-![In exhttps://github.com/pmiossec/vscode-gitextensions/raw/masterlorer](./doc/extensions_explorer_contextual_menu.jpg)
+
+![In explorer](https://github.com/pmiossec/vscode-gitextensions/raw/master/doc/extensions_explorer_contextual_menu.jpg)
+
+### Integration in the File Editor window
+
+Commands available via the `editor` and the `editor title` contextual menus :
+
+* GitExtensions: See in Diff Tool
+* GitExtensions: See File History
+* GitExtensions: Revert changes
 
 Commands in the editor:
+
 ![In editor](https://github.com/pmiossec/vscode-gitextensions/raw/master/doc/extensions_editor_contextual_menu.jpg)
 
+### Integration in the Source Code Management (SCM) menu 
 
 Commands available via the `Source Control Management` title menu :
 * GitExtensions: Browse repository
 * GitExtensions: Commit
 
 Commands in the SCM menu:
+
 ![SCM integration](https://github.com/pmiossec/vscode-gitextensions/raw/master/doc/extensions_scm_contextual_menu.jpg)
 
-These contextual menus could be easily hidden with VSCode settings `config.gitExtensions.explorer.contextmenu`, `config.gitExtensions.editor.title.contextmenu`,  `config.gitExtensions.editor.contextmenu` and `gitExtensions.scm.title.menu`.
+### Settings to customize the integrations
 
-All the settings available to disable some integration:
+All the settings available to customize Git Extentions integration to fit your needs by disabling the integration in some place of VSCode:
 ![Settings](https://github.com/pmiossec/vscode-gitextensions/raw/master/doc/extension_settings.jpg)
 
 ## Requirements
@@ -70,6 +92,6 @@ All the settings available to disable some integration:
 
 ## Known Issues
 
-None at the moment (it's a work in progress)
+None known.
 
 
