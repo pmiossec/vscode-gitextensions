@@ -6,10 +6,10 @@ import { window, StatusBarAlignment, FileSystemWatcher, Uri } from 'vscode';
 const findWorkspaceFolder = () => {
   const workspaceFolders = vscode.workspace.workspaceFolders;
 
-  if (workspaceFolders === undefined || workspaceFolders.length == 0) {
+  if (workspaceFolders === undefined || workspaceFolders.length === 0) {
     return null;
   }
-  if (workspaceFolders.length == 1) {
+  if (workspaceFolders.length === 1) {
     return workspaceFolders[0].uri.fsPath;
   }
   if (window.activeTextEditor === undefined) {

@@ -88,7 +88,7 @@ All the settings available to customize Git Extentions integration to fit your n
 ## Requirements
 
 * GitExtensions should be accessible in the PATH or configured in VSCode setting `gitExtensions.exe.path`.
-* Visual Studio Code v1.74
+* Visual Studio Code v1.79
 
 ## Known Issues
 
